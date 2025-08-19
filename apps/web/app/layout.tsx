@@ -13,6 +13,16 @@ const fontMono = Geist_Mono({
   variable: '--font-mono',
 })
 
+/**
+ * Application root layout component.
+ *
+ * Renders the top-level HTML structure for the app: an <html lang="en"> element (with hydration warning suppressed)
+ * and a <body> that applies the configured sans and mono font CSS variables plus utility classes. Wraps the rendered
+ * children with ClerkProvider (authentication context) and the app-wide Providers component so nested pages/components
+ * receive authentication and global context.
+ *
+ * @returns The root JSX element representing the application's HTML and body wrappers.
+ */
 export default function RootLayout({
   children,
 }: Readonly<{

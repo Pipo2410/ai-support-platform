@@ -10,6 +10,18 @@ import { api } from '@workspace/backend/_generated/api'
 import { Button } from '@workspace/ui/components/button'
 import { SignInButton, UserButton } from '@clerk/nextjs'
 
+/**
+ * Page component that shows an authentication-gated UI for viewing and adding users.
+ *
+ * When the visitor is authenticated, renders a centered view that displays a Clerk UserButton,
+ * a Button to trigger the `addUser` Convex mutation, and the list of users fetched via
+ * `api.users.getMany`. When unauthenticated, shows a sign-in prompt with a Clerk SignInButton.
+ *
+ * The Add User button invokes the `addUser` mutation without arguments; the users list is
+ * rendered as JSON. No explicit loading or error states are handled by this component.
+ *
+ * @returns A React element with authenticated and unauthenticated UI branches.
+ */
 export default function Page() {
   const users = useQuery(api.users.getMany)
   const addUser = useMutation(api.users.add)
