@@ -1,4 +1,3 @@
-import { v } from 'convex/values'
 import { mutation, query } from './_generated/server'
 
 export const getMany = query({
@@ -17,6 +16,12 @@ export const add = mutation({
 
     if (identity === null) {
       throw new Error('User not authenticated')
+    }
+
+    const orgId = identity.orgId as string
+
+    if (!orgId) {
+      throw new Error('Missing organization')
     }
 
     const userId = await ctx.db.insert('users', { name: 'Peter' })
