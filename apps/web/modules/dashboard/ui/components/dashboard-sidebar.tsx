@@ -25,6 +25,7 @@ import {
 import { OrganizationSwitcher, UserButton } from '@clerk/nextjs'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { cn } from '@workspace/ui/lib/utils'
 
 const customerSupportItems = [
   { title: 'Conversations', url: '/conversations', icon: InboxIcon },
@@ -90,6 +91,10 @@ export const DashboardSidebar = () => {
                     asChild
                     isActive={isActive(item.url)}
                     tooltip={item.title}
+                    className={cn(
+                      isActive(item.url) &&
+                        'bg-gradient-to-b from-sidebar-primary to-[#0b63f3]! text-sidebar-primary-foreground! hover:to-[#0b63f3]/90!'
+                    )}
                   >
                     <Link href={item.url}>
                       <item.icon />
@@ -112,6 +117,10 @@ export const DashboardSidebar = () => {
                     asChild
                     isActive={isActive(item.url)}
                     tooltip={item.title}
+                    className={cn(
+                      isActive(item.url) &&
+                        'bg-gradient-to-b from-sidebar-primary to-[#0b63f3]! text-sidebar-primary-foreground! hover:to-[#0b63f3]/90!'
+                    )}
                   >
                     <Link href={item.url}>
                       <item.icon />
@@ -134,6 +143,10 @@ export const DashboardSidebar = () => {
                     asChild
                     isActive={isActive(item.url)}
                     tooltip={item.title}
+                    className={cn(
+                      isActive(item.url) &&
+                        'bg-gradient-to-b from-sidebar-primary to-[#0b63f3]! text-sidebar-primary-foreground! hover:to-[#0b63f3]/90!'
+                    )}
                   >
                     <Link href={item.url}>
                       <item.icon />
