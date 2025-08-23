@@ -3,7 +3,7 @@ import { HomeIcon, InboxIcon } from 'lucide-react'
 import { Button } from '@workspace/ui/components/button'
 import { cn } from '@workspace/ui/lib/utils'
 
-const WidgetFooter = () => {
+export const WidgetFooter = () => {
   const screen = 'selection'
   return (
     <footer className='flex items-center justify-between border-t bg-background'>
@@ -31,5 +31,3 @@ const WidgetFooter = () => {
     </footer>
   )
 }
-
-export default WidgetFooter
