@@ -18,7 +18,8 @@ import z from 'zod'
 import {
   contactSessionIdAtomFamily,
   organizationIdAtom,
-} from '../../atoms/widget-atoms'
+  screenAtom,
+} from '@/modules/widget/atoms/widget-atoms'
 
 const formSchema = z.object({
   name: z.string().min(1, 'Name is required'),
@@ -30,6 +31,7 @@ const organizationId = '123'
 
 export const WidgetAuthScreen = () => {
   const organizationId = useAtomValue(organizationIdAtom)
+  const setScreen = useSetAtom(screenAtom)
   const setContactSessionId = useSetAtom(
     contactSessionIdAtomFamily(organizationId || '')
   )
@@ -71,6 +73,7 @@ export const WidgetAuthScreen = () => {
     })
 
     setContactSessionId(contactSessionId)
+    setScreen('selection')
   }
   return (
     <>
