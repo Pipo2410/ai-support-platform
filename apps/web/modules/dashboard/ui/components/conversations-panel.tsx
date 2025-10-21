@@ -61,7 +61,7 @@ export const ConversationsPanel = () => {
 
   return (
     <div className='flex h-full w-full flex-col bg-background text-sidebar-foreground'>
-      <div className='flex fle-col gap-3 5 border-b p-2'>
+      <div className='flex flex-col gap-3.5 border-b p-2'>
         <Select
           defaultValue='all'
           onValueChange={(value) =>
@@ -193,7 +193,7 @@ export const SkeletorConversations = () => {
               <div className='min-w-0 flex-1'>
                 <div className='flex w-full items-center gap-2'>
                   <Skeleton className='h-4 w-24' />
-                  <Skeleton className='ml-auto h-3 2-12 shrink-0' />
+                  <Skeleton className='ml-auto h-3 w-12 shrink-0' />
                 </div>
                 <div className='mt-2'>
                   <Skeleton className='h-3 w-full' />
