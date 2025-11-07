@@ -1,4 +1,5 @@
-import { openai } from '@ai-sdk/openai'
+// import { openai } from '@ai-sdk/openai'
+import { google } from '@ai-sdk/google'
 import { generateText } from 'ai'
 import type { StorageActionWriter } from 'convex/server'
 import { assert } from 'convex-helpers'
@@ -6,9 +7,12 @@ import { Id } from '../_generated/dataModel'
 
 // TODO: Use different models for different file types
 const AI_MODELS = {
-  image: openai.chat('gpt-5-nano'),
-  pdf: openai.chat('gpt-5-nano'),
-  html: openai.chat('gpt-5-nano'),
+  image: google.chat('gemini-2.5-flash'),
+  pdf: google.chat('gemini-2.5-flash'),
+  html: google.chat('gemini-2.5-flash'),
+  // image: openai.chat('gpt-5-nano'),
+  // pdf: openai.chat('gpt-5-nano'),
+  // html: openai.chat('gpt-5-nano'),
 } as const
 
 const SUPPORTED_IMAGE_TYPES = [
