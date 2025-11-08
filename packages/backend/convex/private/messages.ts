@@ -5,7 +5,8 @@ import { saveMessage } from '@convex-dev/agent'
 import { action, mutation, query } from '../_generated/server'
 import { components } from '../_generated/api'
 import { supportAgent } from '../system/ai/agents/supportAgent'
-import { openai } from '@ai-sdk/openai'
+// import { openai } from '@ai-sdk/openai'
+import { google } from '@ai-sdk/google'
 
 export const enhanceResponse = action({
   args: {
@@ -31,7 +32,9 @@ export const enhanceResponse = action({
     }
 
     const response = await generateText({
-      model: openai('gpt-5-nano'),
+      // model: openai('gpt-5-nano'),
+      // model: google('gemini-2.5-flash'),
+      model: google('gemini-2.5-pro'),
       messages: [
         {
           role: 'system',
