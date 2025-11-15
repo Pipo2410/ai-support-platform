@@ -7,6 +7,7 @@ import { components } from '../_generated/api'
 import { supportAgent } from '../system/ai/agents/supportAgent'
 // import { openai } from '@ai-sdk/openai'
 import { google } from '@ai-sdk/google'
+import { OPERATOR_MESSAGE_ENHANCEMENT_PROMPT } from '../system/ai/constants/constants'
 
 export const enhanceResponse = action({
   args: {
@@ -33,13 +34,12 @@ export const enhanceResponse = action({
 
     const response = await generateText({
       // model: openai('gpt-5-nano'),
-      // model: google('gemini-2.5-flash'),
-      model: google('gemini-2.5-pro'),
+      // model: google('gemini-2.5-pro'),
+      model: google('gemini-2.5-flash'),
       messages: [
         {
           role: 'system',
-          content:
-            "Enhance the operator's message to be more professional, clear and helpful while maintaining their intent and key information.",
+          content: OPERATOR_MESSAGE_ENHANCEMENT_PROMPT,
         },
         {
           role: 'user',
