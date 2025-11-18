@@ -1,7 +1,7 @@
 import { google } from '@ai-sdk/google'
 import { createTool } from '@convex-dev/agent'
 import { generateText } from 'ai'
-import z from 'zod'
+import { z } from 'zod'
 import { internal } from '../../../_generated/api'
 import { supportAgent } from '../agents/supportAgent'
 import rag from '../rag'
