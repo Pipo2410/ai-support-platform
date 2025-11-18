@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { useAtomValue, useSetAtom } from 'jotai'
 import { LoaderIcon } from 'lucide-react'
-import { useAction, useMutation } from 'convex/react'
+import { useAction, useMutation, useQuery } from 'convex/react'
 
 import {
   contactSessionIdAtomFamily,
@@ -11,6 +11,7 @@ import {
   loadingMessageAtom,
   organizationIdAtom,
   screenAtom,
+  widgetSettingsAtom,
 } from '@/modules/widget/atoms/widget-atoms'
 import { WidgetHeader } from '@/modules/widget/ui/components/widget-header'
 import { api } from '@workspace/backend/_generated/api'
@@ -26,6 +27,7 @@ export const WidgetLoadingScreen = ({
   const [sessionValid, setSessionValid] = useState(false)
 
   const loadingMessage = useAtomValue(loadingMessageAtom)
+  const setWidgetSettings = useSetAtom(widgetSettingsAtom)
   const setLoadingMessage = useSetAtom(loadingMessageAtom)
   const setOrganizationId = useSetAtom(organizationIdAtom)
   const setErrorMessage = useSetAtom(errorMessageAtom)
@@ -92,7 +94,7 @@ export const WidgetLoadingScreen = ({
 
     if (!contactSessionId) {
       setSessionValid(false)
-      setStep('done')
+      setStep('settings')
       return
     }
 
@@ -101,11 +103,11 @@ export const WidgetLoadingScreen = ({
     validateContactSession({ contactSessionId })
       .then((result) => {
         setSessionValid(result.valid)
-        setStep('done')
+        setStep('settings')
       })
       .catch(() => {
         setSessionValid(false)
-        setStep('done')
+        setStep('settings')
       })
   }, [
     step,
@@ -115,6 +117,29 @@ export const WidgetLoadingScreen = ({
     setSessionValid,
     setStep,
   ])
+
+  // Step3: Load widget settings
+  const widgetSettings = useQuery(
+    api.public.widgetSettings.getByOrganizationId,
+    organizationId
+      ? {
+          organizationId,
+        }
+      : 'skip'
+  )
+
+  useEffect(() => {
+    if (step !== 'settings') {
+      return
+    }
+
+    setLoadingMessage('Loading widget settings...')
+
+    if (widgetSettings !== undefined) {
+      setWidgetSettings(widgetSettings)
+      setStep('done')
+    }
+  }, [step, widgetSettings, setStep, setWidgetSettings, setLoadingMessage])
 
   useEffect(() => {
     if (step !== 'done') {
