@@ -14,7 +14,7 @@ import { Input } from '@workspace/ui/components/input'
 import { useMutation } from 'convex/react'
 import { useAtomValue, useSetAtom } from 'jotai'
 import { useForm } from 'react-hook-form'
-import z from 'zod'
+import { z } from 'zod'
 import {
   contactSessionIdAtomFamily,
   organizationIdAtom,

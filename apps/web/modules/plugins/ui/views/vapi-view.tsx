@@ -22,7 +22,7 @@ import {
 } from '@workspace/ui/components/form'
 import { Input } from '@workspace/ui/components/input'
 import { Label } from '@workspace/ui/components/label'
-import z from 'zod'
+import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
