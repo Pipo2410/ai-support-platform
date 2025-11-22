@@ -1,7 +1,13 @@
+'use node'
 import { Vapi, VapiClient } from '@vapi-ai/server-sdk'
 import { internal } from '../_generated/api'
 import { action } from '../_generated/server'
-import { getSecretValue, parseSecretString } from '../lib/secrets'
+import {
+  getSecretValue,
+  getSecretPath,
+  parseSecretString,
+} from '../lib/googleSecrets'
+
 import { ConvexError } from 'convex/values'
 
 export const getAssistants = action({
@@ -41,7 +47,7 @@ export const getAssistants = action({
     }
 
     const secretName = plugin.secretName
-    const secretValue = await getSecretValue(secretName)
+    const secretValue = await getSecretValue(getSecretPath(secretName))
 
     const secretData = parseSecretString<{
       privateApiKey: string
@@ -109,7 +115,7 @@ export const getPhoneNumbers = action({
     }
 
     const secretName = plugin.secretName
-    const secretValue = await getSecretValue(secretName)
+    const secretValue = await getSecretValue(getSecretPath(secretName))
 
     const secretData = parseSecretString<{
       privateApiKey: string

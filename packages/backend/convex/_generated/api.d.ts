@@ -9,6 +9,7 @@
  */
 
 import type * as lib_extractTextContent from "../lib/extractTextContent.js";
+import type * as lib_googleSecrets from "../lib/googleSecrets.js";
 import type * as lib_secrets from "../lib/secrets.js";
 import type * as playground from "../playground.js";
 import type * as private_conversations from "../private/conversations.js";
@@ -51,6 +52,7 @@ import type {
  */
 declare const fullApi: ApiFromModules<{
   "lib/extractTextContent": typeof lib_extractTextContent;
+  "lib/googleSecrets": typeof lib_googleSecrets;
   "lib/secrets": typeof lib_secrets;
   playground: typeof playground;
   "private/conversations": typeof private_conversations;
