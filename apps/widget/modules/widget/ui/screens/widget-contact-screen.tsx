@@ -6,7 +6,7 @@ import {
   screenAtom,
   widgetSettingsAtom,
 } from '@/modules/widget/atoms/widget-atoms'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 export const WidgetContactScreen = () => {
@@ -16,6 +16,15 @@ export const WidgetContactScreen = () => {
   const phoneNumber = widgetSettings?.vapiSettings.phoneNumber
 
   const [copied, setCopied] = useState(false)
+
+  useEffect(() => {
+    if (copied) {
+      const timeoutId = setTimeout(() => {
+        setCopied(false)
+      }, 2000)
+      return () => clearTimeout(timeoutId)
+    }
+  }, [copied])
   const handleCopy = async () => {
     if (!phoneNumber) return
 
@@ -24,10 +33,6 @@ export const WidgetContactScreen = () => {
       setCopied(true)
     } catch (error) {
       console.error(error)
-    } finally {
-      setTimeout(() => {
-        setCopied(false)
-      }, 2000)
     }
   }
 
