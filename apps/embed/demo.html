@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Echo Widget Demo</title>
+    <title>AiSupportPlatform Widget Demo</title>
     <style>
       body {
         font-family:
@@ -71,9 +71,9 @@
   </head>
   <body>
     <div class="container">
-      <h1>Echo Widget Demo</h1>
+      <h1>AiSupportPlatform Widget Demo</h1>
       <p>
-        This page demonstrates how to embed the Echo support widget on your
+        This page demonstrates how to embed the AiSupportPlatform widget on your
         website.
       </p>
 
@@ -112,8 +112,7 @@
 
     <!-- Load the widget with default config -->
     <script
-      type="module"
-      src="/embed.ts"
+      src="https://ai-support-platform-widget.vercel.app/widget.js"
       data-organization-id="org_32nHSjbAzt20udaTLyVOIgjYLPD"
     ></script>
 
@@ -133,29 +132,29 @@
           position: document.getElementById('position').value,
         }
 
-        if (window.EchoWidget) {
-          window.EchoWidget.init(config)
+        if (window.AiSupportPlatformWidget) {
+          window.AiSupportPlatformWidget.init(config)
           console.log('Widget reinitialized with config:', config)
         }
       }
 
       window.showWidget = function () {
-        if (window.EchoWidget) {
-          window.EchoWidget.show()
+        if (window.AiSupportPlatformWidget) {
+          window.AiSupportPlatformWidget.show()
         } else {
           alert('Please initialize the widget first')
         }
       }
 
       window.hideWidget = function () {
-        if (window.EchoWidget) {
-          window.EchoWidget.hide()
+        if (window.AiSupportPlatformWidget) {
+          window.AiSupportPlatformWidget.hide()
         }
       }
 
       window.destroyWidget = function () {
-        if (window.EchoWidget) {
-          window.EchoWidget.destroy()
+        if (window.AiSupportPlatformWidget) {
+          window.AiSupportPlatformWidget.destroy()
           console.log('Widget destroyed')
         }
       }
