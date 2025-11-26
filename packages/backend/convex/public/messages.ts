@@ -50,7 +50,7 @@ export const create = action({
       })
     }
 
-    // This refreshes the user's session if they are withing the threshold
+    // This refreshes the user's session if they are within the threshold
     await ctx.runMutation(internal.system.contactSessions.refresh, {
       contactSessionId: args.contactSessionId,
     })
