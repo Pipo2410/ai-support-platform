@@ -37,7 +37,9 @@ import { chatBubbleIcon, closeIcon } from './icons'
 
   // Exit if no organization ID
   if (!organizationId) {
-    console.error('Echo Widget: data-organization-id attribute is required')
+    console.error(
+      'AiSupportPlatform Widget: data-organization-id attribute is required'
+    )
     return
   }
 
@@ -52,7 +54,7 @@ import { chatBubbleIcon, closeIcon } from './icons'
   function render() {
     // Create floating action button
     button = document.createElement('button')
-    button.id = 'echo-widget-button'
+    button.id = 'ai-support-platform-widget-button'
     button.innerHTML = chatBubbleIcon
     button.style.cssText = `
       position: fixed;
@@ -85,7 +87,7 @@ import { chatBubbleIcon, closeIcon } from './icons'
 
     // Create container (hidden by default)
     container = document.createElement('div')
-    container.id = 'echo-widget-container'
+    container.id = 'ai-support-platform-widget-container'
     container.style.cssText = `
       position: fixed;
       ${position === 'bottom-right' ? 'right: 20px;' : 'left: 20px;'}
@@ -219,7 +221,7 @@ import { chatBubbleIcon, closeIcon } from './icons'
   }
 
   // Expose API to global scope
-  ;(window as any).EchoWidget = {
+  ;(window as any).AiSupportPlatformWidget = {
     init: reinit,
     show,
     hide,
